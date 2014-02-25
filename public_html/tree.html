@@ -58,13 +58,25 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-3 col-md-2 sidebar">
-                    <div id="leftPane">
+                <div id="leftPane" class="col-md-3 ">
+                    <div class="btn-group btn-group-sm" style="padding:10px ; ">
+                        <button type="button" onclick="javascript:$('#tree').jstree('open_all')">Expand all</button>
+                        <button type="button" onclick="javascript:$('#tree').jstree('close_all')">Collapse all</button>
+                    </div>
+                    <div class="input-group" style="padding:10px ; ">
+                        <input id="tree_q" type="text" class="form-control">
+                    </div>
+                    <div id="tree">
+                    </div>
+                </div>
+                <div class= "col-md-9 hidden-sm hidden-xs panel panel-default">
+                    <div class="panel-heading">Test Information</div>
+                    <div class="panel-body">    
+                        <iframe id="rightPane" class="col-md-9" style="height: 724px ; " onload="javascript:resizeIframe(this);" seamless>
+                        </iframe>
                     </div>
                 </div>
 
-                <iframe id="rightPane" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" onload="javascript:resizeIframe(this);" seamless>
-                </iframe>
             </div>
         </div>
 
@@ -78,196 +90,47 @@
         <script src="controllers/treeController.js"></script>
         <script src="model/execution.js"></script>
         <script type="text/javascript" >
-                    function populateTreeNew() {
-                        treeController($('#leftPane'));
-                        $('#leftPane').bind('select_node.jstree', function(e, data) {
-                            /** 
-                             * Set direct-access to node 
-                             */
-                            var a = data.node.a_attr;
-                            //var link = node.children('a'); 
-                            /** 
-                             * Add linking, because jstree catches all click-Events 
-                             */
-                            if (a.href !== '#' && a.target !== '') {
-                                var iframe = $('iframe#rightPane');
-                                iframe.attr('src', a.href);
+                            function populateTreeNew() {
+                                $.jstree.defaults.search.show_only_matches = true;
+                                treeController($('#tree'));
+                                $('#tree').bind('select_node.jstree', function(e, data) {
+                                    /** 
+                                     * Set direct-access to node 
+                                     */
+                                    var a = data.node.a_attr;
+                                    //var link = node.children('a'); 
+                                    /** 
+                                     * Add linking, because jstree catches all click-Events 
+                                     */
+                                    if (a.href !== '#' && a.target !== '') {
+                                        var iframe = $('iframe#rightPane');
+                                        iframe.attr('src', a.href);
+                                    }
+                                });
+                                $(function() {
+                                    $("#tree").jstree({
+                                        "plugins": ["search"]
+                                    });
+                                    var to = false;
+                                    $('#tree_q').keyup(function() {
+                                        if (to) {
+                                            clearTimeout(to);
+                                        }
+                                        to = setTimeout(function() {
+                                            var v = $('#tree_q').val();
+                                            $('#tree').jstree(true).search(v);
+                                        }, 250);
+                                    });
+                                });
+
+
+
                             }
-                        });
 
 
-                        //$('#leftPane').jstree(core);
-
-//                        console.log(core);
-//                        var tree = $('#leftPane').jstree();
-//                        tree.core = new Object();
-//                        console.log(tree.core);
-//                        treeController(tree.core);
-//                        tree.bind('select_node.jstree', function(e, data) {
-//                            /** 
-//                             * Set direct-access to node 
-//                             */
-//                            var a = data.node.a_attr;
-//                            //var link = node.children('a'); 
-//                            /** 
-//                             * Add linking, because jstree catches all click-Events 
-//                             */
-//                            if (a.href !== '#' && a.target !== '') {
-//                                var iframe = $('iframe#rightPane');
-//                                iframe.attr('src', a.href);
-//                            }
-//                        }
-//                        )
-//                                ;
-                    }
-
-
-                    function populateTree() {
-                        $('#leftPane').jstree({'core': {
-                                'data': [
-                                    {'text': 'JSystem',
-                                        'icon': 'images/jsystem_ico.gif',
-                                        'children': [
-                                            {
-                                                'text': '127.0.0.1',
-                                                'icon': 'images/device.gif',
-                                                'state': {
-                                                    'opened': true,
-                                                    'selected': true
-                                                },
-                                                'children': [
-                                                    {'text': 'scenario',
-                                                        'icon': 'images/tsuitefail.gif',
-                                                        'children': [
-                                                            {
-                                                                'url': "testOne345353.html",
-                                                                'text': '1. TestOne',
-                                                                'icon': 'images/testok.gif',
-                                                                'a_attr': {'href': "testOne345353.html"}
-                                                            },
-                                                            {
-                                                                'url': "testOne345353.html",
-                                                                'text': '2. TestTwo',
-                                                                'icon': 'images/testwarning.gif',
-                                                                'a_attr': {'href': "testOne345353.html"}
-                                                            },
-                                                            {
-                                                                'url': "testOne345353.html",
-                                                                'text': '3. TestThree',
-                                                                'icon': 'images/testerr.gif',
-                                                                'a_attr': {'href': "testOne345353.html"}
-                                                            },
-                                                            {
-                                                                'text': "scenario",
-                                                                'icon': 'images/tsuitefail.gif',
-                                                                'children': [{
-                                                                        'url': "testOne345353.html",
-                                                                        'text': '3. TestThree',
-                                                                        'icon': 'images/testerr.gif',
-                                                                        'a_attr': {'href': "testOne345353.html"}
-                                                                    }
-                                                                ]
-
-                                                            }
-                                                        ]},
-                                                    {'text': '4. testTwo'
-                                                        , 'icon': 'images/testok.gif'},
-                                                    {'text': '5. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '6. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '7. testTwo', 'icon': 'images/testwarning.gif'},
-                                                    {'text': '8. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '9. testTwo', 'icon': 'images/testfail.gif'},
-                                                    {'text': '10. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '11. testTwo', 'icon': 'images/testrun.gif'},
-                                                    {'text': '4. testTwo'
-                                                        , 'icon': 'images/testok.gif'},
-                                                    {'text': '5. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '6. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '7. testTwo', 'icon': 'images/testwarning.gif'},
-                                                    {'text': '8. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '9. testTwo', 'icon': 'images/testfail.gif'},
-                                                    {'text': '10. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '11. testTwo', 'icon': 'images/testrun.gif'},
-                                                    {'text': '4. testTwo'
-                                                        , 'icon': 'images/testok.gif'},
-                                                    {'text': '5. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '6. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '7. testTwo', 'icon': 'images/testwarning.gif'},
-                                                    {'text': '8. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '9. testTwo', 'icon': 'images/testfail.gif'},
-                                                    {'text': '10. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '11. testTwo', 'icon': 'images/testrun.gif'},
-                                                    {'text': '4. testTwo'
-                                                        , 'icon': 'images/testok.gif'},
-                                                    {'text': '5. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '6. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '7. testTwo', 'icon': 'images/testwarning.gif'},
-                                                    {'text': '8. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '9. testTwo', 'icon': 'images/testfail.gif'},
-                                                    {'text': '10. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '11. testTwo', 'icon': 'images/testrun.gif'},
-                                                    {'text': '4. testTwo'
-                                                        , 'icon': 'images/testok.gif'},
-                                                    {'text': '5. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '6. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '7. testTwo', 'icon': 'images/testwarning.gif'},
-                                                    {'text': '8. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '9. testTwo', 'icon': 'images/testfail.gif'},
-                                                    {'text': '10. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '11. testTwo', 'icon': 'images/testrun.gif'},
-                                                    {'text': '4. testTwo'
-                                                        , 'icon': 'images/testok.gif'},
-                                                    {'text': '5. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '6. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '7. testTwo', 'icon': 'images/testwarning.gif'},
-                                                    {'text': '8. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '9. testTwo', 'icon': 'images/testfail.gif'},
-                                                    {'text': '10. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '11. testTwo', 'icon': 'images/testrun.gif'},
-                                                    {'text': '4. testTwo'
-                                                        , 'icon': 'images/testok.gif'},
-                                                    {'text': '5. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '6. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '7. testTwo', 'icon': 'images/testwarning.gif'},
-                                                    {'text': '8. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '9. testTwo', 'icon': 'images/testfail.gif'},
-                                                    {'text': '10. testTwo', 'icon': 'images/testok.gif'},
-                                                    {'text': '11. testTwo', 'icon': 'images/testrun.gif'},
-                                                ]
-                                            }
-
-
-
-
-                                        ]}
-                                ]
-
-                            }}).bind('select_node.jstree', function(e, data) {
-                            /** 
-                             * Set direct-access to node 
-                             */
-                            var a = data.node.a_attr;
-                            //var link = node.children('a'); 
-                            /** 
-                             * Add linking, because jstree catches all click-Events 
-                             */
-                            if (a.href !== '#' && a.target !== '') {
-                                var iframe = $('iframe#rightPane');
-                                iframe.attr('src', a.href);
-                            }
-                        }
-                        );
-                    }
-
-
-                    function loadControllers() {
-                        console.log(treeController());
-                    }
-
-                    $(document).ready(function() {
-                        populateTreeNew();
-                        //loadControllers();
-                    });
+                            $(document).ready(function() {
+                                populateTreeNew();
+                            });
         </script>
 
 

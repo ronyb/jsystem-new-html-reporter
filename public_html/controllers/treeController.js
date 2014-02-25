@@ -58,6 +58,7 @@ function treeController(element) {
             populateChildren(this.children, children);
         });
         core = {'core': {'data': [tree]}};
+        core.plugins = ['search','state'];
         $(element).jstree(core);
 
     });

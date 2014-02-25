@@ -85,6 +85,102 @@ var execution = {
                                     "status": "warning",
                                     "duration": "176",
                                     "timestamp": "12:15:23"
+                                }, {
+                                    "type": "scenario",
+                                    "name": "Scenario with warning",
+                                    "status": "warning",
+                                    "children": [
+                                        {
+                                            "type": "test",
+                                            "index": "6",
+                                            "name": "testSeven",
+                                            "status": "success",
+                                            "duration": "174",
+                                            "timestamp": "11:51:23"
+
+                                        }, {
+                                            "type": "test",
+                                            "index": "7",
+                                            "name": "testEight",
+                                            "status": "warning",
+                                            "duration": "176",
+                                            "timestamp": "12:15:23"
+                                        }, {
+                                            "type": "scenario",
+                                            "name": "Scenario with warning",
+                                            "status": "warning",
+                                            "children": [
+                                                {
+                                                    "type": "test",
+                                                    "index": "6",
+                                                    "name": "testSeven",
+                                                    "status": "success",
+                                                    "duration": "174",
+                                                    "timestamp": "11:51:23"
+
+                                                }, {
+                                                    "type": "test",
+                                                    "index": "7",
+                                                    "name": "testEight",
+                                                    "status": "warning",
+                                                    "duration": "176",
+                                                    "timestamp": "12:15:23"
+                                                }, {
+                                                    "type": "scenario",
+                                                    "name": "Scenario with warning",
+                                                    "status": "warning",
+                                                    "children": [
+                                                        {
+                                                            "type": "test",
+                                                            "index": "6",
+                                                            "name": "testSeven",
+                                                            "status": "success",
+                                                            "duration": "174",
+                                                            "timestamp": "11:51:23"
+
+                                                        }, {
+                                                            "type": "test",
+                                                            "index": "7",
+                                                            "name": "testEight",
+                                                            "status": "warning",
+                                                            "duration": "176",
+                                                            "timestamp": "12:15:23"
+                                                        }, {
+                                                            "type": "scenario",
+                                                            "name": "Scenario with warning",
+                                                            "status": "warning",
+                                                            "children": [
+                                                                {
+                                                                    "type": "test",
+                                                                    "index": "6",
+                                                                    "name": "testSeven",
+                                                                    "status": "success",
+                                                                    "duration": "174",
+                                                                    "timestamp": "11:51:23"
+
+                                                                }, {
+                                                                    "type": "test",
+                                                                    "index": "7",
+                                                                    "name": "testEight",
+                                                                    "status": "warning",
+                                                                    "duration": "176",
+                                                                    "timestamp": "12:15:23"
+                                                                }
+
+                                                            ]
+
+                                                        }
+
+                                                    ]
+
+                                                }
+
+                                            ]
+
+                                        }
+
+                                    ]
+
                                 }
 
                             ]
