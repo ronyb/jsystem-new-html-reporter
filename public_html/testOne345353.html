@@ -3,27 +3,28 @@
 
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
     <title>TestOne</title>
+
     <style type="text/css" title="currentStyle">
         @import "css/general_page.css";
-		@import "css/test_page.css"
+		@import "css/test_page.css";
     </style>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-    </script>
-    <script>
-		function toggle(id){
-            $("#"+id).toggle(200);
-		}
-    </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="model/testOne345353.js"></script>
+    <script src="controllers/testController.js"></script>
+    <script src="js/toggle.js"></script>
+
 
     <body id="page">
         <div id="container">
-            <div class="full_width big">
-                TestOne
+            <div class="full_width big" id="testNameHeadline">
+
             </div>
-            <h1>Results for date 29/01/2014 11:49:23</h1>
+            <h1 id="resultHeader">Results for date </h1><!--29/01/2014 11:49:23 -->
             <div>
-				<h2>This is the test description</h2>
+				<h2 id="testDescription"></h2>
 				<table id='parameter-table' cellpadding="0" cellspacing="0" border="0" width="30%">
 					<thead>
 						<tr>
@@ -31,21 +32,13 @@
 							<th align='left'>Value</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>UserName</td>
-							<td>Itaiag</td>
-						</tr>
-						<tr>
-							<td>Password</td>
-							<td>s3cr3t</td>
-						</tr>
+					<tbody id="paramBody">
 					</tbody>
 				</table>
 			</div>
 			<br/>
-			<div>
-                <br/>
+			<div id="stepTables">
+                <br>
 				<!-- cellspacing="0" border="0" -->
 				<table class="testtbl" >
                     <thead>
