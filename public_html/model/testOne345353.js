@@ -13,22 +13,24 @@ var testJson = {
         {
             "timestamp": "11:49:22",
             "description": "This is the first step",
-            "status": "failure",
+            "status": "success",
             "reportElements": [
                 {
                     "timestamp": "11:49:23",
+                    "status":"success",
                     "title": "Clickin on some element"
-
                 },
                 {
                     "timestamp": "11:49:24",
-                    "title": "Clickin on some element",
+                    "status":"success",
+                    "title": "Open some element - MESSAGE",
                     "message": "This is some message"
 
                 },
                 {
                     "timestamp": "11:49:25",
-                    "title": "This is a screenshot",
+                    "status":"success",
+                    "title": "This is a screenshot - IMAGE",
                     "file": "resources/Capture323234.PNG",
                     "type": "IMAGE"
                 }
@@ -41,20 +43,50 @@ var testJson = {
             "reportElements": [
                 {
                     "timestamp": "11:50:23",
-                    "title": "Clickin on some element"
+                    "status":"warning",
+                    "title": "Clickin on some button"
 
                 },
                 {
                     "timestamp": "11:50:24",
-                    "title": "Clickin on some element",
+                    "status":"warning",
+                    "title": "Select some element from list - MESSAGE",
                     "message": "This is some message"
 
                 },
                 {
                     "timestamp": "11:50:25",
-                    "title": "This is a screenshot",
+                    "status":"failure",
+                    "title": "This is a screenshot of the element - VIDEO",
                     "file": "resources/Capture323234.PNG",
-                    "type": "IMAGE"
+                    "type": "VIDEO"
+                }
+            ]
+        },
+        {
+            "timestamp": "11:51:22",
+            "description": "This is the Third step",
+            "status": "warning",
+            "reportElements": [
+                {
+                    "timestamp": "11:51:23",
+                    "status":"success",
+                    "title": "Clickin on some element"
+
+                },
+                {
+                    "timestamp": "11:51:24",
+                    "status":"warning",
+                    "title": "Clickin on some element - MESSAGE",
+                    "message": "This is some message"
+
+                },
+                {
+                    "timestamp": "11:51:25",
+                    "status":"success",
+                    "title": "This is a screenshot - LOG",
+                    "file": "resources/Capture323234.PNG",
+                    "type": "LOG"
                 }
             ]
         }
