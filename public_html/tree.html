@@ -63,16 +63,16 @@
                         <button type="button" onclick="javascript:$('#tree').jstree('open_all')">Expand all</button>
                         <button type="button" onclick="javascript:$('#tree').jstree('close_all')">Collapse all</button>
                     </div>
-                    <div class="input-group" style="padding:10px ; ">
+                    <div class="input-group" style="padding:10px">
                         <input id="tree_q" type="text" class="form-control">
                     </div>
-                    <div id="tree">
+                    <div id="tree" style = "overflow-x: auto;min-height: 704px;">
                     </div>
                 </div>
                 <div class= "col-md-9 hidden-sm hidden-xs panel panel-default">
                     <div class="panel-heading">Test Information</div>
                     <div class="panel-body">    
-                        <iframe id="rightPane" class="col-md-9" style="height: 724px ; " onload="javascript:resizeIframe(this);" seamless>
+                        <iframe id="rightPane" class="col-md-12" style="height: 724px ; " onload="javascript:resizeIframe(this);" seamless>
                         </iframe>
                     </div>
                 </div>

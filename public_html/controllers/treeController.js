@@ -9,11 +9,11 @@ function populateChildren(source, destination) {
         switch (this.type) {
             case "scenario" :
                 var children = new Array();
-                destination.push({'text': this.name, 'icon': suiteIcon(this.status), 'children': children});
+                destination.push({'text': this.name, 'icon': suiteIcon(this.status), 'children': children, 'type':this.status});
                 populateChildren(this.children, children);
                 break;
             case "test":
-                destination.push({'text': this.index + ". " + this.name, 'icon': testIcon(this.status), 'a_attr': {'href': "test.html?index=" + this.index}});
+                destination.push({'text': this.index + ". " + this.name,  'icon': testIcon(this.status), 'rel' : this.status ,'type' : this.status , 'a_attr': {'href': "test.html?index=" + this.index}});
                 break;
         }
     });
@@ -33,6 +33,8 @@ function testIcon(status) {
             return "images/testrun.gif";
     }
 }
+
+
 
 function suiteIcon(status) {
     switch (status) {
@@ -58,7 +60,17 @@ function treeController(element) {
             populateChildren(this.children, children);
         });
         core = {'core': {'data': [tree]}};
-        core.plugins = ['search','state'];
+        core.plugins = ['search','state','types'];
+        core.types = {'valid_children': 
+                    ['success'],
+                     'types' :
+                             { 'success' : 
+                                 { 'icon' :
+                                     { 'image' :'./images/jsystem_ico.gif'}
+                         }
+                     }
+                 };
+        console.log(JSON.stringify(core));
         $(element).jstree(core);
 
     });
