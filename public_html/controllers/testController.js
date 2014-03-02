@@ -29,26 +29,34 @@ $(document).ready(function () {
                 else if(testJson.steps[i].status === "warning"){
                     stepTable += " class='header warning'"
                 }
-                stepTable += "><div >" + testJson.steps[i].description + "</div></th>\n" + "</tr>\n </thead>\n <tbody id='step" + i + "' >\n";
+                stepTable += "><div onclick=" + String.fromCharCode(34) +"toggle('step" + i + "')" + String.fromCharCode(34) + ">";
+                stepTable += testJson.steps[i].description + "</div></th>\n" + "</tr>\n </thead>\n <tbody id='step" + i + "' >\n";
                 for (var j in testJson.steps[i].reportElements){
                     if (testJson.steps[i].reportElements.hasOwnProperty(j)){
+                        stepTable += "<tr>\n<td>" + testJson.steps[i].reportElements[j].timestamp + "</td>\n";
+
                         if(testJson.steps[i].reportElements[j].hasOwnProperty("type")){
                             if(testJson.steps[i].reportElements[j].type === 'IMAGE'){
-                                //TODO: If it is an image element what do we want to do?
-                                console.log('doing something with picture')};
+                                stepTable += String("<td>\n<a onclick=") + String.fromCharCode(34) +"toggle('sc')" + String.fromCharCode(34) + "href='#'>";
+                                stepTable += testJson.steps[i].reportElements[j].title+"</a>\n";
+                                stepTable += "<div>\n" + new String("<img id='sc' style='display: none;' src='");
+                                stepTable +=  testJson.steps[i].reportElements[j].file + "' alt='Image' height='500' width='500'>";
+                                stepTable += "\n</div>\n</td>\n";};
                             if(testJson.steps[i].reportElements[j].type === 'VIDEO'){
+                                stepTable += "<td>" + testJson.steps[i].reportElements[j].title + "</td>\n";
                                 //TODO: If it is a video element what do we want to do?
                                 console.log('doing something with video')};
                             if(testJson.steps[i].reportElements[j].type === 'LOG'){
+                                stepTable += "<td>" + testJson.steps[i].reportElements[j].title + "</td>\n";
                                 //TODO: If it is a log element what do we want to do?
                                 console.log('doing something with log file')};
                         }
                         else if(testJson.steps[i].reportElements[j].hasOwnProperty("message")){
+                            stepTable += "<td>" + testJson.steps[i].reportElements[j].title + "</td>\n";
                             //TODO: If it is some message we want to present to user how do we want to do it?
                             console.log("doing something with message");
                         }
                         else{
-                            stepTable += "<tr>\n<td>" + testJson.steps[i].reportElements[j].timestamp + "</td>\n";
                             stepTable += "<td";
                             if(testJson.steps[i].reportElements[j].status === "warning"){
                                 stepTable += " class='warning'";
@@ -56,9 +64,9 @@ $(document).ready(function () {
                             else if(testJson.steps[i].reportElements[j].status === "failure"){
                                 stepTable += " class='fail'";
                             }
-                            stepTable += ">" + testJson.steps[i].reportElements[j].title + "</td>\n</tr>\n";
+                            stepTable += ">" + testJson.steps[i].reportElements[j].title + "</td>\n";
                         };
-                        if(testJson.steps[i].reportElements[j].hasOwnProperty("message")){console.log(testJson.steps[i].reportElements[j].message)};
+                        stepTable += "</tr>\n";
                     }
                 }
                 stepTable+= "</tbody>\n</table>\n<br/>\n";
