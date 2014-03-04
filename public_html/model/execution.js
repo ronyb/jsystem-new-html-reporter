@@ -92,7 +92,7 @@ var execution = {
                                     "children": [
                                         {
                                             "type": "test",
-                                            "index": "6",
+                                            "index": "8",
                                             "name": "testSeven",
                                             "status": "success",
                                             "duration": "174",
@@ -100,9 +100,9 @@ var execution = {
 
                                         }, {
                                             "type": "test",
-                                            "index": "7",
+                                            "index": "9",
                                             "name": "testEight",
-                                            "status": "warning",
+                                            "status": "success",
                                             "duration": "176",
                                             "timestamp": "12:15:23"
                                         }, {
@@ -112,7 +112,7 @@ var execution = {
                                             "children": [
                                                 {
                                                     "type": "test",
-                                                    "index": "6",
+                                                    "index": "10",
                                                     "name": "testSeven",
                                                     "status": "success",
                                                     "duration": "174",
@@ -120,9 +120,9 @@ var execution = {
 
                                                 }, {
                                                     "type": "test",
-                                                    "index": "7",
+                                                    "index": "11",
                                                     "name": "testEight",
-                                                    "status": "warning",
+                                                    "status": "failure",
                                                     "duration": "176",
                                                     "timestamp": "12:15:23"
                                                 }, {
@@ -132,15 +132,15 @@ var execution = {
                                                     "children": [
                                                         {
                                                             "type": "test",
-                                                            "index": "6",
+                                                            "index": "12",
                                                             "name": "testSeven",
-                                                            "status": "success",
-                                                            "duration": "174",
+                                                            "status": "failure",
+                                                            "duration": "1734",
                                                             "timestamp": "11:51:23"
 
                                                         }, {
                                                             "type": "test",
-                                                            "index": "7",
+                                                            "index": "13",
                                                             "name": "testEight",
                                                             "status": "warning",
                                                             "duration": "176",
@@ -152,7 +152,7 @@ var execution = {
                                                             "children": [
                                                                 {
                                                                     "type": "test",
-                                                                    "index": "6",
+                                                                    "index": "14",
                                                                     "name": "testSeven",
                                                                     "status": "success",
                                                                     "duration": "174",
@@ -160,9 +160,9 @@ var execution = {
 
                                                                 }, {
                                                                     "type": "test",
-                                                                    "index": "7",
+                                                                    "index": "15",
                                                                     "name": "testEight",
-                                                                    "status": "warning",
+                                                                    "status": "success",
                                                                     "duration": "176",
                                                                     "timestamp": "12:15:23"
                                                                 }
@@ -186,6 +186,54 @@ var execution = {
                             ]
 
                         }
+                    ]
+
+                }
+
+            ]
+        },
+        {
+            "name": "192.128.10.145",
+            "scenarios": [
+                {
+                    "type": "scenario",
+                    "name": "anotherScenario",
+                    "status": "failure",
+                    "children": [
+                        {
+                            "type": "test",
+                            "index": "0",
+                            "name": "testOne",
+                            "status": "success",
+                            "duration": "1750",
+                            "timestamp": "11:49:23"
+                        },
+                        {
+                            "type": "test",
+                            "index": "1",
+                            "name": "testTwo",
+                            "status": "warning",
+                            "duration": "1750",
+                            "timestamp": "11:50:23"
+                        },
+                        {
+                            "type": "test",
+                            "index": "2",
+                            "name": "testThree",
+                            "status": "failure",
+                            "duration": "173",
+                            "timestamp": "11:51:23"
+
+                        },
+                        {
+                            "type": "test",
+                            "index": "3",
+                            "name": "testSix",
+                            "status": "success",
+                            "duration": "173",
+                            "timestamp": "12:20:23"
+                        },
+                       
                     ]
 
                 }
