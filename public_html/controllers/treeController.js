@@ -26,7 +26,7 @@ function testIcon(status) {
         case "failure":
             return "images/testfail.gif";
         case "error":
-            return "images/testerr";
+            return "images/testerr.gif";
         case "warning":
             return "images/testwarning.gif";
         case "inProgress":
@@ -43,7 +43,7 @@ function suiteIcon(status) {
         case "failure":
             return "images/tsuitefail.gif";
         case "error":
-            return "images/tsuiteerror";
+            return "images/tsuiteerror.gif";
         case "warning":
             return "images/tsuiteWarning.gif";
     }
