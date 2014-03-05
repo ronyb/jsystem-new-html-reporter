@@ -232,7 +232,7 @@ var execution = {
                             "status": "success",
                             "duration": "173",
                             "timestamp": "12:20:23"
-                        },
+                        }
                        
                     ]
 
@@ -242,4 +242,4 @@ var execution = {
         }
     ]
 
-}
+};
