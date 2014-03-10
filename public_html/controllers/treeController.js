@@ -9,11 +9,11 @@ function populateChildren(source, destination) {
         switch (this.type) {
             case "scenario" :
                 var children = new Array();
-                destination.push({'text': this.name, 'icon': suiteIcon(this.status), 'children': children, 'type':this.status});
+                destination.push({'text': this.name, 'icon': suiteIcon(this.status), 'children': children, 'type': this.status});
                 populateChildren(this.children, children);
                 break;
             case "test":
-                destination.push({'text': this.index + ". " + this.name,  'icon': testIcon(this.status), 'rel' : this.status ,'type' : this.status , 'a_attr': {'href': "test.html?index=" + this.index}});
+                destination.push({'text': this.index + ". " + this.name, 'icon': testIcon(this.status), 'rel': this.status, 'type': this.status, 'a_attr': {'href': "test.html?index=" + this.index}});
                 break;
         }
     });
@@ -26,7 +26,7 @@ function testIcon(status) {
         case "failure":
             return "images/testfail.gif";
         case "error":
-            return "images/testerr";
+            return "images/testerr.gif";
         case "warning":
             return "images/testwarning.gif";
         case "inProgress":
@@ -43,7 +43,7 @@ function suiteIcon(status) {
         case "failure":
             return "images/tsuitefail.gif";
         case "error":
-            return "images/tsuiteerror";
+            return "images/tsuiteerror.gif";
         case "warning":
             return "images/tsuiteWarning.gif";
     }
@@ -53,27 +53,27 @@ function treeController(element) {
     var json = execution;
     var tree = {'text': 'JSystem', 'icon': 'images/jsystem_ico.gif', 'children': []};
     $(json.machines).each(function(machineIndex) {
-        tree.children[machineIndex] = {'text': this.name, icon: 'images/device.gif', 'children': [], 'state': {'opened': true, 'selected': true}};
+        tree.children.push({'text': this.name, icon: 'images/device.gif', 'children': [], 'state': {'opened': true, 'selected': true}});
         $(this.scenarios).each(function(scenarioIndex) {
             var children = new Array();
             tree.children[machineIndex].children[scenarioIndex] = {'text': this.name, icon: suiteIcon(this.status), 'children': children};
             populateChildren(this.children, children);
         });
-        core = {'core': {'data': [tree]}};
-        core.plugins = ['search','state','types'];
-        core.types = {'valid_children': 
-                    ['success'],
-                     'types' :
-                             { 'success' : 
-                                 { 'icon' :
-                                     { 'image' :'./images/jsystem_ico.gif'}
-                         }
-                     }
-                 };
-        console.log(JSON.stringify(core));
-        $(element).jstree(core);
+
 
     });
+    core = {'core': {'data': [tree]}};
+    core.plugins = ['search', 'state', 'types'];
+    core.types = {'valid_children': 
+                ['success'],
+        'types':
+                {'success':
+                            {'icon':
+                                        {'image': './images/jsystem_ico.gif'}
+                            }
+                }
+    };
+    $(element).jstree(core);
 //    return result;
 }
 //

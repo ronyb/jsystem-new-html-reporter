@@ -4,39 +4,6 @@
  * and open the template in the editor.
  */
 
-function collectTestsFromScenario(children,tests){
-    $(children).each(function(){
-       switch (this.type) {
-           case "test":
-               tests.push(this);
-               break;
-           case "scenario":
-               collectTestsFromScenario(this.children,tests);
-               break;
-       }
-    });
-}
-
-function collectAllTests(){
-    var tests = new Array();
-    $(execution.machines).each(function(){
-        var machineName = this.name;
-        $(this.scenarios).each(function() {
-            var suiteName = this.name;
-            var suiteTests = new Array();
-            collectTestsFromScenario(this.children,suiteTests);
-            $(suiteTests).each(function() {
-                this.machineName = machineName;
-                this.suiteName = suiteName;
-            });
-            tests = tests.concat(suiteTests);
-        });
-        
-    });
-    return tests;
-    
-}
-
 function appendTestsToTable(tests,table){
     $(tests).each(function(){
        var tr = $('<tr>');

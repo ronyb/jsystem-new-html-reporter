@@ -20,7 +20,7 @@ var execution = {
                             "type": "test",
                             "index": "1",
                             "name": "testTwo",
-                            "status": "warning",
+                            "status": "error",
                             "duration": "1750",
                             "timestamp": "11:50:23"
                         },
@@ -204,7 +204,7 @@ var execution = {
                             "type": "test",
                             "index": "0",
                             "name": "testOne",
-                            "status": "success",
+                            "status": "error",
                             "duration": "1750",
                             "timestamp": "11:49:23"
                         },
@@ -232,7 +232,7 @@ var execution = {
                             "status": "success",
                             "duration": "173",
                             "timestamp": "12:20:23"
-                        },
+                        }
                        
                     ]
 
@@ -242,4 +242,4 @@ var execution = {
         }
     ]
 
-}
+};
