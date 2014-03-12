@@ -54,7 +54,7 @@ function treeController(element) {
     var tree = {'text': 'JSystem', 'icon': 'images/jsystem_ico.gif', 'children': []};
     $(json.machines).each(function(machineIndex) {
         tree.children.push({'text': this.name, icon: 'images/device.gif', 'children': [], 'state': {'opened': true, 'selected': true}});
-        $(this.scenarios).each(function(scenarioIndex) {
+        $(this.children).each(function(scenarioIndex) {
             var children = new Array();
             tree.children[machineIndex].children[scenarioIndex] = {'text': this.name, icon: suiteIcon(this.status), 'children': children};
             populateChildren(this.children, children);

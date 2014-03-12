@@ -30,7 +30,7 @@ function collectAllTests(){
     var tests = new Array();
     $(execution.machines).each(function(){
         var machineName = this.name;
-        $(this.scenarios).each(function() {
+        $(this.children).each(function() {
             var suiteName = this.name;
             var suiteTests = new Array();
             collectTestsFromScenario(this.children,suiteTests);

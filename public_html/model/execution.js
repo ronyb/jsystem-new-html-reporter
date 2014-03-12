@@ -2,7 +2,7 @@ var execution = {
     "machines": [
         {
             "name": "127.0.0.1",
-            "scenarios": [
+            "children": [
                 {
                     "type": "scenario",
                     "name": "myScenario",
@@ -194,7 +194,7 @@ var execution = {
         },
         {
             "name": "192.128.10.145",
-            "scenarios": [
+            "children": [
                 {
                     "type": "scenario",
                     "name": "anotherScenario",
