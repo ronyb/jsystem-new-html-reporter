@@ -84,6 +84,16 @@ function setRegularElement(table, element) {
     }
 }
 
+function setStepElement(table, element) {
+    var tr = $("<tr>");
+    tr.append($('<td>').text(element.time));
+    tr.append($('<td>').text(element.title));
+    tr.addClass("step");
+    addStatusAsClass(tr, element);
+    $(table).append(tr);
+
+}
+
 function setLinkElement(table, element) {
     var tr = $("<tr>");
     tr.append($('<td>').text(element.time));
@@ -108,6 +118,10 @@ function setReportElements(table, reportElements) {
             case "lnk":
                 setLinkElement(table, this);
                 break;
+            case "step":
+                setStepElement(table, this);
+                break;
+
             default:
                 setRegularElement(table, this);
                 break;
