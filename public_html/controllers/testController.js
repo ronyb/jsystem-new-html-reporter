@@ -44,7 +44,7 @@ function addToggleElement(table, toggle, toggled, startAsOpened) {
         doToggle(id);
     });
     $(toggle).addClass("toggle");
-    $(toggled).attr("id", id).attr("colspan", "2");
+    $(toggled).attr("id", id).find("td").attr("colspan", "2");
     if (startAsOpened) {
         toggled.show();
     } else {
