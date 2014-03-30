@@ -94,6 +94,18 @@ function setStepElement(table, element) {
 
 }
 
+function setImageElement(table,element){
+    var tr = $("<tr>");
+    tr.append($('<td>').text(element.time));
+    var img = $("<img>").attr("src",element.message).addClass("example-image").attr("alt",element.title);
+    var a = $("<a>").attr("href",element.message).attr("data-lightbox","image-1").attr("title",element.title);
+    a.append(img);
+    var td = $("<td>");
+    td.append(a);
+    tr.append(td);
+    $(table).append(tr);
+}
+
 function setLinkElement(table, element) {
     var tr = $("<tr>");
     tr.append($('<td>').text(element.time));
@@ -120,6 +132,9 @@ function setReportElements(table, reportElements) {
                 break;
             case "step":
                 setStepElement(table, this);
+                break;
+            case "img":
+                setImageElement(table,this);
                 break;
 
             default:
